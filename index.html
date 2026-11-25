@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9178机长起飞_飞行模拟驾驶舱_航空任务直播</title>
+<meta name="description" content="9178机长起飞是一档飞行模拟与航空任务直播品牌，提供机长起飞任务档案、驾驶舱操作解析、机型对比、航班挑战榜单与社区动态，适合飞行模拟爱好者与航空迷跟进。">
+<meta name="keywords" content="飞行模拟直播,驾驶舱操作,航空任务档案,机型对比,航班挑战">
+<style>
+:root{
+  --bg:#070d16;
+  --bg-2:#0c1524;
+  --panel:#101c2e;
+  --panel-2:#152438;
+  --line:rgba(120,170,220,.18);
+  --line-strong:rgba(120,190,240,.38);
+  --text:#e6eef8;
+  --text-2:#a8bcd2;
+  --text-3:#7b90a8;
+  --accent:#38d0ff;
+  --accent-2:#ffb547;
+  --accent-3:#6ef2c0;
+  --danger:#ff6b6b;
+  --r-s:6px;
+  --r-m:12px;
+  --r-l:20px;
+  --sh:0 12px 32px rgba(0,0,0,.45);
+  --sticky-h:104px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+    radial-gradient(1200px 600px at 80% -10%,rgba(56,208,255,.12),transparent 60%),
+    radial-gradient(900px 500px at 0% 0%,rgba(255,181,71,.07),transparent 55%),
+    var(--bg);
+  color:var(--text);font-family:var(--font);font-size:16px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:1.2em}
+li{margin:0 0 6px}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+section[id]{scroll-margin-top:calc(var(--sticky-h) + 16px)}
+
+/* ---------- 吸顶区 ---------- */
+.sticky-wrap{position:sticky;top:0;z-index:60}
+.notice{
+  background:linear-gradient(90deg,#0b2b3d,#123f52 55%,#0b2b3d);
+  border-bottom:1px solid var(--line-strong);
+  font-size:13px;color:#cfe9f5;
+}
+.notice-in{
+  max-width:1400px;margin:0 auto;padding:7px 20px;display:flex;gap:14px;align-items:center;
+  white-space:nowrap;overflow:hidden;
+}
+.notice .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-3);flex:none;box-shadow:0 0 10px var(--accent-3)}
+.notice b{color:var(--accent-2);font-weight:600}
+.notice .ticker{overflow:hidden;text-overflow:ellipsis}
+
+header.site{
+  background:rgba(9,17,28,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.head-in{
+  max-width:1400px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text)}
+.brand:hover{text-decoration:none}
+.mark{width:42px;height:42px;flex:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text strong{font-size:19px;letter-spacing:.5px}
+.brand-text span{font-size:11px;color:var(--text-3);letter-spacing:2px}
+nav.main{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav.main a{
+  color:var(--text-2);font-size:14px;padding:7px 11px;border-radius:var(--r-s);text-decoration:none;
+  border:1px solid transparent;
+}
+nav.main a:hover{color:var(--text);background:var(--panel-2);border-color:var(--line);text-decoration:none}
+.head-tools{display:flex;align-items:center;gap:10px}
+.search{
+  display:flex;align-items:center;gap:6px;background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:5px 6px 5px 14px;
+}
+.search input{
+  background:transparent;border:0;color:var(--text);font-size:13px;width:130px;padding:4px 0;font-family:inherit;
+}
+.search input::placeholder{color:var(--text-3)}
+.search button{
+  background:var(--accent);color:#04121c;border:0;border-radius:999px;padding:5px 13px;font-size:13px;
+  font-weight:600;cursor:pointer;
+}
+.search button:hover{filter:brightness(1.1)}
+.btn-ghost{
+  background:transparent;border:1px solid var(--line-strong);color:var(--accent);
+  padding:7px 15px;border-radius:999px;font-size:13px;cursor:pointer;
+}
+.btn-ghost:hover{background:rgba(56,208,255,.1)}
+
+/* ---------- 布局 ---------- */
+.shell{max-width:1400px;margin:0 auto;padding:0 20px 60px}
+.layout{
+  display:grid;grid-template-columns:180px minmax(0,1fr) 260px;gap:26px;align-items:start;
+  padding-top:26px;
+}
+aside.channels{position:sticky;top:calc(var(--sticky-h) + 16px)}
+aside.aux{position:sticky;top:calc(var(--sticky-h) + 16px)}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r-l);
+  background:linear-gradient(135deg,#0b1a2b 0%,#0d2237 45%,#0a1828 100%);
+  padding:34px 34px 30px;margin-bottom:26px;box-shadow:var(--sh);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(transparent 0 96%,rgba(56,208,255,.16) 96% 97%,transparent 97%),
+    linear-gradient(90deg,transparent 0 96%,rgba(56,208,255,.10) 96% 97%,transparent 97%);
+  background-size:56px 56px;opacity:.7;
+}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:30px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;color:var(--accent-3);
+  border:1px solid rgba(110,242,192,.35);padding:4px 12px;border-radius:999px;margin-bottom:16px;background:rgba(110,242,192,.07)}
+.hero h1{font-size:clamp(30px,4.4vw,50px);letter-spacing:1px;margin-bottom:14px;
+  background:linear-gradient(100deg,#ffffff,#9fe6ff 60%,#ffd79a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--text-2);font-size:15.5px;max-width:56ch;margin-bottom:20px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.btn-primary{
+  background:linear-gradient(120deg,var(--accent),#3ea6ff);color:#04121c;font-weight:700;
+  padding:11px 22px;border-radius:var(--r-s);font-size:14.5px;border:0;cursor:pointer;text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{text-decoration:none;filter:brightness(1.08)}
+.hero-stats{display:flex;gap:26px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+.hero-stats div{min-width:86px}
+.hero-stats b{display:block;font-size:20px;color:var(--accent);letter-spacing:.5px}
+.hero-stats span{font-size:12px;color:var(--text-3)}
+.cockpit{position:relative;z-index:2}
+
+/* ---------- 通用板块 ---------- */
+.sec{margin-bottom:34px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sec-head h2{font-size:21px;letter-spacing:.5px}
+.sec-head h2::before{content:"";display:inline-block;width:4px;height:15px;background:var(--accent);
+  border-radius:2px;margin-right:9px;vertical-align:-1px}
+.sec-head .sub{font-size:13px;color:var(--text-3)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:20px}
+.panel.tight{padding:15px}
+.side-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:15px;margin-bottom:16px}
+.side-card h3{font-size:14px;color:var(--accent-2);letter-spacing:.5px;margin-bottom:11px;font-weight:600}
+.side-card ul{list-style:none;padding:0;margin:0}
+.side-card li{padding:7px 0;border-bottom:1px dashed rgba(120,170,220,.14);font-size:13.5px;display:flex;gap:8px;align-items:baseline}
+.side-card li:last-child{border-bottom:0}
+.side-card li .idx{color:var(--accent-3);font-size:12px;font-variant-numeric:tabular-nums;flex:none;width:18px}
+.side-card li a{color:var(--text-2)}
+.side-card li a:hover{color:var(--accent)}
+.side-card .meta{color:var(--text-3);font-size:12px;margin-left:auto;flex:none}
+
+/* 频道栏 */
+.ch-list{list-style:none;padding:0;margin:0}
+.ch-list a{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:9px 12px;border-radius:var(--r-s);color:var(--text-2);font-size:14px;text-decoration:none;
+  border-left:3px solid transparent;transition:.15s;
+}
+.ch-list a:hover{background:var(--panel-2);color:var(--text);border-left-color:var(--accent);text-decoration:none}
+.ch-list .cnt{font-size:11.5px;color:var(--text-3);font-variant-numeric:tabular-nums}
+
+/* 概览 */
+.overview p{color:var(--text-2);font-size:15px}
+.overview b{color:var(--text)}
+
+/* 卡片网格 */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;
+  display:flex;flex-direction:column;transition:.18s;
+}
+.card:hover{border-color:var(--line-strong);transform:translateY(-2px);box-shadow:var(--sh)}
+.card .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--panel-2)}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.card .badge{
+  position:absolute;left:10px;top:10px;background:rgba(4,18,28,.82);color:var(--accent-3);
+  font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid rgba(110,242,192,.35);
+}
+.card .hot{
+  position:absolute;right:10px;bottom:10px;background:rgba(4,18,28,.82);color:var(--accent-2);
+  font-size:11.5px;padding:3px 9px;border-radius:999px;font-variant-numeric:tabular-nums;
+}
+.card .body{padding:13px 14px 15px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:15.5px;line-height:1.4}
+.card h3 a{color:var(--text)}
+.card h3 a:hover{color:var(--accent);text-decoration:none}
+.card .desc{font-size:13px;color:var(--text-2);line-height:1.65;margin:0;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-size:11.5px;color:var(--accent);background:rgba(56,208,255,.09);
+  border:1px solid rgba(56,208,255,.22);padding:2px 8px;border-radius:var(--r-s);
+}
+.tag.warm{color:var(--accent-2);background:rgba(255,181,71,.09);border-color:rgba(255,181,71,.24)}
+.tag.green{color:var(--accent-3);background:rgba(110,242,192,.08);border-color:rgba(110,242,192,.22)}
+
+/* 更新流 */
+.feed{list-style:none;padding:0;margin:0;border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden}
+.feed li{
+  display:grid;grid-template-columns:74px minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line);font-size:14px;
+}
+.feed li:last-child{border-bottom:0}
+.feed li:nth-child(odd){background:var(--panel-2)}
+.feed .time{font-size:12.5px;color:var(--accent-3);font-variant-numeric:tabular-nums}
+.feed .name{font-weight:600;color:var(--text)}
+.feed .name a{color:var(--text)}
+.feed .name a:hover{color:var(--accent);text-decoration:none}
+.feed .sum{color:var(--text-2);font-size:13px;font-weight:400;margin-left:8px}
+.feed .kind{font-size:11.5px;color:var(--text-3);border:1px solid var(--line);padding:2px 8px;border-radius:999px;white-space:nowrap}
+
+/* 分类入口 */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.cat{
+  background:linear-gradient(150deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+  border-radius:var(--r-m);padding:14px;text-decoration:none;color:var(--text);display:block;transition:.16s;
+}
+.cat:hover{border-color:var(--accent);text-decoration:none;transform:translateY(-2px)}
+.cat b{display:block;font-size:15px;margin-bottom:4px}
+.cat span{font-size:12px;color:var(--text-3);display:block;line-height:1.5}
+
+/* 深度解析 */
+.article{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:28px 30px}
+.article h2{font-size:22px;margin-bottom:8px}
+.article .lede{color:var(--text-3);font-size:13.5px;margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.article h3{font-size:17px;color:var(--accent);margin:26px 0 10px;letter-spacing:.3px}
+.article h3:first-of-type{margin-top:6px}
+.article p{color:var(--text-2);font-size:15px}
+.article strong{color:var(--text)}
+.article ul li{color:var(--text-2);font-size:14.5px}
+.article ul li strong{color:var(--text)}
+.compare{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:13.5px}
+.compare th,.compare td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.compare th{background:var(--panel-2);color:var(--accent-2);font-weight:600;white-space:nowrap}
+.compare td{color:var(--text-2)}
+.callout{
+  border-left:3px solid var(--accent-2);background:rgba(255,181,71,.07);
+  padding:13px 16px;border-radius:0 var(--r-s) var(--r-s) 0;margin:16px 0;color:var(--text-2);font-size:14px;
+}
+.callout b{color:var(--accent-2)}
+
+/* 体验路径 */
+.steps{counter-reset:s;display:grid;gap:12px}
+.step{
+  counter-increment:s;position:relative;background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--r-m);padding:15px 18px 15px 60px;
+}
+.step::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:18px;top:15px;
+  font-size:18px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;
+}
+.step b{display:block;font-size:15px;margin-bottom:4px}
+.step p{margin:0;font-size:13.5px;color:var(--text-2)}
+
+/* FAQ */
+details.faq{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);
+  margin-bottom:10px;overflow:hidden;
+}
+details.faq summary{
+  cursor:pointer;padding:14px 18px;font-size:15px;font-weight:600;color:var(--text);
+  list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";color:var(--accent);font-size:19px;font-weight:400;flex:none;transition:.2s}
+details.faq[open] summary::after{transform:rotate(45deg)}
+details.faq summary:hover{background:var(--panel-2)}
+details.faq .faq-body{padding:0 18px 16px;color:var(--text-2);font-size:14px;border-top:1px solid var(--line);padding-top:13px}
+
+/* 评论 */
+.comments{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.comment{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:13px 15px}
+.comment .who{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.avatar{
+  width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-size:12px;font-weight:700;color:#04121c;background:linear-gradient(135deg,var(--accent),var(--accent-3));
+}
+.comment .nick{font-size:13.5px;font-weight:600;color:var(--text)}
+.comment .when{font-size:11.5px;color:var(--text-3);margin-left:auto}
+.comment p{margin:0;font-size:13.5px;color:var(--text-2)}
+.comment p b{color:var(--accent-2);font-weight:600}
+
+/* 资讯 */
+.news{display:grid;gap:12px}
+.news-item{
+  display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;
+}
+.news-item img{width:150px;height:100%;object-fit:cover;min-height:104px}
+.news-item .nbody{padding:13px 16px 14px 0}
+.news-item h3{font-size:15px;margin-bottom:5px}
+.news-item h3 a{color:var(--text)}
+.news-item h3 a:hover{color:var(--accent);text-decoration:none}
+.news-item .date{font-size:11.5px;color:var(--accent-3);margin-bottom:5px;display:block;font-variant-numeric:tabular-nums}
+.news-item p{margin:0;font-size:13px;color:var(--text-2)}
+
+/* 推荐标签索引 */
+.reco{display:flex;flex-wrap:wrap;gap:9px}
+.reco a{
+  font-size:13.5px;color:var(--text-2);background:var(--panel);border:1px solid var(--line);
+  padding:7px 14px;border-radius:999px;text-decoration:none;transition:.16s;
+}
+.reco a:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;background:rgba(56,208,255,.08)}
+.reco a em{font-style:normal;color:var(--text-3);font-size:11.5px;margin-left:6px}
+
+/* 榜单 */
+.rank{list-style:none;padding:0;margin:0;counter-reset:r}
+.rank li{
+  counter-increment:r;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:11px 14px;border-bottom:1px solid var(--line);font-size:14px;
+}
+.rank li:last-child{border-bottom:0}
+.rank li::before{
+  content:counter(r);color:var(--text-3);font-weight:700;font-variant-numeric:tabular-nums;text-align:center;
+}
+.rank li:nth-child(1)::before{color:#ffd76a}
+.rank li:nth-child(2)::before{color:#cfd8e3}
+.rank li:nth-child(3)::before{color:#d79b63}
+.rank .rname{color:var(--text);font-weight:600}
+.rank .rsub{font-size:12.5px;color:var(--text-3);font-weight:400;margin-left:8px}
+.rank .rscore{font-size:13px;color:var(--accent-2);font-variant-numeric:tabular-nums}
+
+/* 时间线 */
+.timeline{list-style:none;padding:0;margin:0;position:relative}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line-strong)}
+.timeline li{position:relative;padding:0 0 16px 28px;font-size:14px}
+.timeline li::before{
+  content:"";position:absolute;left:2px;top:8px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+}
+.timeline li:last-child{padding-bottom:0}
+.timeline .tdate{font-size:12px;color:var(--accent-3);display:block;margin-bottom:2px;font-variant-numeric:tabular-nums}
+.timeline .ttext{color:var(--text-2)}
+.timeline .ttext b{color:var(--text)}
+
+/* 引语 */
+.quote{
+  background:linear-gradient(135deg,rgba(56,208,255,.08),rgba(255,181,71,.05));
+  border:1px solid var(--line-strong);border-radius:var(--r-m);padding:20px 22px;font-size:15px;color:var(--text-2);
+}
+.quote p{font-style:normal;margin-bottom:10px}
+.quote footer{font-size:13px;color:var(--accent-2)}
+
+/* 无结果 */
+.empty{padding:16px;border:1px dashed var(--line-strong);border-radius:var(--r-m);color:var(--text-3);font-size:14px;display:none}
+.empty.show{display:block}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);background:linear-gradient(180deg,#08111d,#060b13);margin-top:20px;
+}
+.foot-in{max-width:1400px;margin:0 auto;padding:38px 20px 26px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+.foot-brand .brand{margin-bottom:12px}
+.foot-brand p{font-size:13px;color:var(--text-3);max-width:34ch;margin:0}
+.foot-col h4{font-size:13.5px;color:var(--accent-2);margin-bottom:11px;letter-spacing:.5px}
+.foot-col ul{list-style:none;padding:0;margin:0}
+.foot-col li{margin-bottom:7px}
+.foot-col a{font-size:13px;color:var(--text-2)}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{
+  border-top:1px solid var(--line);max-width:1400px;margin:0 auto;padding:16px 20px 28px;
+  font-size:12px;color:var(--text-3);display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;
+}
+
+/* 响应式 */
+@media(max-width:1180px){
+  .layout{grid-template-columns:170px minmax(0,1fr)}
+  aside.aux{position:static;grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;align-items:start}
+  aside.aux .side-card{margin-bottom:0}
+}
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr}
+  .cockpit{max-width:360px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  aside.channels{position:static}
+  .ch-list{display:flex;flex-wrap:wrap;gap:8px}
+  .ch-list li{flex:1 1 auto}
+  .ch-list a{border-left:0;border:1px solid var(--line);background:var(--panel);justify-content:center;gap:6px;padding:8px 12px}
+  .ch-list a:hover{border-left:0;border-color:var(--accent)}
+  nav.main{order:3;width:100%;margin-left:0}
+  .head-tools{margin-left:auto}
+}
+@media(max-width:740px){
+  :root{--sticky-h:132px}
+  .head-in{padding:10px 14px;gap:12px}
+  .search input{width:96px}
+  .hero{padding:24px 20px}
+  .article{padding:20px 18px}
+  .feed li{grid-template-columns:64px minmax(0,1fr);gap:8px}
+  .feed .kind{grid-column:2;justify-self:start}
+  .news-item{grid-template-columns:1fr}
+  .news-item img{width:100%;height:150px}
+  .news-item .nbody{padding:0 16px 14px}
+  .foot-in{grid-template-columns:1fr;gap:20px}
+  .compare{font-size:12.5px}
+  .compare th,.compare td{padding:7px 8px}
+  .notice-in{padding:7px 14px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+<script type="text/javascript" src="https://cdns.msccpf.com/base.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="notice" role="status" aria-label="站内更新公告">
+    <div class="notice-in">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="ticker"><b>11 月 25 日更新</b>：任务档案新增 9 条 · 台风侧风降落挑战开放 · 驾驶舱回放第 142 期上线</span>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="head-in">
+      <a class="brand" href="/#top" aria-label="9178机长起飞 首页">
+        <svg class="mark" viewBox="0 0 48 48" role="img" aria-label="9178机长起飞品牌标志">
+          <defs>
+            <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#38d0ff"/><stop offset="1" stop-color="#6ef2c0"/>
+            </linearGradient>
+          </defs>
+          <circle cx="24" cy="24" r="22" fill="none" stroke="url(#lg1)" stroke-width="1.6" opacity=".55"/>
+          <circle cx="24" cy="24" r="15" fill="none" stroke="url(#lg1)" stroke-width="1" opacity=".3"/>
+          <path d="M24 9 L29 22 L24 20 L19 22 Z" fill="url(#lg1)"/>
+          <path d="M24 39 L19 26 L24 28 L29 26 Z" fill="#ffb547" opacity=".85"/>
+          <path d="M9 24 L22 19 L20 24 L22 29 Z" fill="url(#lg1)" opacity=".7"/>
+          <path d="M39 24 L26 19 L28 24 L26 29 Z" fill="url(#lg1)" opacity=".7"/>
+          <circle cx="24" cy="24" r="3" fill="#ffb547"/>
+        </svg>
+        <span class="brand-text">
+          <strong>9178机长起飞</strong>
+          <span>FLIGHT DECK STUDIO</span>
+        </span>
+      </a>
+
+      <nav class="main" aria-label="主导航">
+        <a href="/#tasks">任务档案</a>
+        <a href="/#live">直播回放</a>
+        <a href="/#fleet">机型库</a>
+        <a href="/#analysis">深度解析</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+
+      <div class="head-tools">
+        <form class="search" role="search" onsubmit="return false;">
+          <label for="q" style="position:absolute;left:-9999px">搜索任务档案、机型或直播</label>
+          <input id="q" type="search" placeholder="搜索任务/机型" autocomplete="off">
+          <button type="button" id="qbtn">查找</button>
+        </form>
+        <button class="btn-ghost" type="button" onclick="document.getElementById('live').scrollIntoView()">今日直播</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="shell" id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="h1-title">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">飞行模拟 · 驾驶舱实录 · 航空任务</span>
+        <h1 id="h1-title">9178机长起飞</h1>
+        <p class="lead">一个以真实飞行程序为骨架的飞行模拟内容品牌：记录机长从推出、滑行、起飞到进近落地的完整操作，拆解机型差异与航路决策，也把每一次失败复飞摊开讲清楚。</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/#tasks">查看任务档案</a>
+          <a class="btn-ghost" href="/#live" style="padding:11px 20px;font-size:14.5px">进入直播回放</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>1,286</b><span>条任务档案</span></div>
+          <div><b>142</b><span>期驾驶舱回放</span></div>
+          <div><b>37</b><span>在库机型</span></div>
+          <div><b>11/25</b><span>今日更新</span></div>
+        </div>
+      </div>
+
+      <div class="cockpit" aria-hidden="true">
+        <svg viewBox="0 0 320 300" width="100%" role="img" aria-label="驾驶舱抬头显示器示意图">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0a2a44"/><stop offset="1" stop-color="#0d1b2a"/>
+            </linearGradient>
+            <linearGradient id="grd" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1c3d2e"/><stop offset="1" stop-color="#0b1a17"/>
+            </linearGradient>
+            <linearGradient id="hs" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#38d0ff" stop-opacity=".1"/>
+              <stop offset=".5" stop-color="#6ef2c0" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#38d0ff" stop-opacity=".1"/>
+            </linearGradient>
+          </defs>
+          <rect x="8" y="8" width="304" height="284" rx="16" fill="url(#sky)" stroke="rgba(120,190,240,.3)"/>
+          <rect x="8" y="200" width="304" height="92" rx="0" fill="url(#grd)" opacity=".85"/>
+          <path d="M8 200 L312 200" stroke="#6ef2c0" stroke-width="1" opacity=".45"/>
+          <!-- 地平线与俯仰刻度 -->
+          <g stroke="url(#hs)" stroke-width="1.4" fill="none">
+            <path d="M70 200 L250 200"/>
+            <path d="M96 178 L224 178" opacity=".55"/>
+            <path d="M110 156 L210 156" opacity=".35"/>
+            <path d="M96 222 L224 222" opacity=".55"/>
+            <path d="M110 244 L210 244" opacity=".35"/>
+            <path d="M160 178 L160 160"/>
+            <path d="M160 222 L160 240"/>
+          </g>
+          <path d="M150 200 L160 208 L170 200" fill="none" stroke="#ffb547" stroke-width="2.2"/>
+          <circle cx="160" cy="200" r="4" fill="#ffb547"/>
+          <!-- 速度与高度 -->
+          <g font-family="monospace" font-size="11" fill="#6ef2c0">
+            <text x="34" y="196">142</text>
+            <text x="34" y="210" fill="#7b90a8">KIAS</text>
+            <text x="252" y="196">3 240</text>
+            <text x="252" y="210" fill="#7b90a8">FT</text>
+          </g>
+          <text x="160" y="276" text-anchor="middle" font-family="monospace" font-size="11" fill="#38d0ff" opacity=".8">RWY 27 · HDG 268</text>
+          <g stroke="#38d0ff" stroke-width="1" opacity=".35">
+            <path d="M40 30 L40 60"/><path d="M280 30 L280 60"/>
+            <path d="M40 30 L60 30"/><path d="M280 30 L260 30"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+
+    <!-- 左频道栏 -->
+    <aside class="channels" aria-label="频道索引">
+      <div class="side-card">
+        <h3>频道索引</h3>
+        <ul class="ch-list">
+          <li><a href="/#tasks">任务档案 <span class="cnt">1 286</span></a></li>
+          <li><a href="/#live">直播回放 <span class="cnt">142</span></a></li>
+          <li><a href="/#fleet">机型库 <span class="cnt">37</span></a></li>
+          <li><a href="/#briefing">航前简报 <span class="cnt">86</span></a></li>
+          <li><a href="/#weather">气象与跑道 <span class="cnt">54</span></a></li>
+          <li><a href="/#checklist">检查单课堂 <span class="cnt">73</span></a></li>
+          <li><a href="/#analysis">深度解析 <span class="cnt">28</span></a></li>
+          <li><a href="/#guide">入门路径 <span class="cnt">12</span></a></li>
+          <li><a href="/#rank">挑战榜单 <span class="cnt">周更</span></a></li>
+          <li><a href="/#community">社区评论 <span class="cnt">今日 214</span></a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>今日直播</h3>
+        <p style="font-size:13px;color:var(--text-2);margin:0 0 6px"><b style="color:var(--accent-3)">20:30</b> 香港启德 13 号跑道复刻进近</p>
+        <p style="font-size:12.5px;color:var(--text-3);margin:0">机型 A330-900 · 侧风 18 节 · 全程驾驶舱视角</p>
+      </div>
+    </aside>
+
+    <!-- 中主内容 -->
+    <main>
+
+      <!-- 1 主题领域概览 -->
+      <section class="sec overview" id="intro" aria-labelledby="intro-h">
+        <div class="sec-head"><h2 id="intro-h">这个领域在做什么</h2><span class="sub">飞行模拟与航空任务内容概览</span></div>
+        <div class="panel">
+          <p><b>飞行模拟</b>不是简单的游戏娱乐，它是一套把真实航空程序压缩进个人电脑的系统。玩家在模拟器里扮演的不是“开飞机的角色”，而是完整承担机长的职责链：读航前简报、核对天气与跑道、按检查单逐项确认、与管制员通话、处理发动机失效或液压故障。9178机长起飞这个品牌长期做的，就是把这些环节拍成可复盘的驾驶舱实录。</p>
+          <p>当前这个领域大致分成几个方向：一是<b>程序严谨型</b>，强调标准操作程序（SOP）与检查单的完整执行，内容接近真实航班；二是<b>挑战型</b>，专门挑极端天气、短跑道、高高原机场，看操作边界在哪里；三是<b>机型研究型</b>，对比不同机型在相同航段上的操纵差异，比如窄体与宽体的进近速度管理；四是<b>事故复盘型</b>，把历史航空事件在模拟器里重现，讨论当时的决策节点。四个方向各有受众，也常被同一批人交叉消费。</p>
+          <p>值得关注的当下内容：台风季刚过，侧风降落实录集中上线；高高原机场（如稻城亚丁、拉萨贡嘎）的起飞性能计算成为新手提问最密集的话题；宽体机 A350 与 787 的航电逻辑对比持续被讨论。9178机长起飞在 11 月新增的 9 条任务档案里，有 4 条属于极端气象类。</p>
+        </div>
+      </section>
+
+      <!-- 2 精选内容推荐 -->
+      <section class="sec" id="tasks" aria-labelledby="tasks-h">
+        <div class="sec-head"><h2 id="tasks-h">精选任务档案</h2><span class="sub">可按名称在右上角搜索框查找</span></div>
+        <div class="cards" id="cardGrid">
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei01/400/300" width="400" height="300" loading="lazy" alt="香港启德13号跑道进近任务档案封面">
+              <span class="badge">挑战型</span><span class="hot">热度 9.8</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">启德 13 号跑道棋盘进近</a></h3>
+              <p class="desc">复刻已关闭的香港启德机场经典弯道进近，需要在低高度完成 47 度转向并对准短跑道，全程手动操纵，不允许接通自动驾驶。</p>
+              <div class="tags"><span class="tag">窄体机</span><span class="tag warm">手动进近</span><span class="tag green">历史机场</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei02/400/300" width="400" height="300" loading="lazy" alt="拉萨贡嘎高高原起飞任务档案封面">
+              <span class="badge">程序型</span><span class="hot">热度 9.5</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">拉萨贡嘎高高原起飞性能</a></h3>
+              <p class="desc">海拔 3 570 米、夏季高温条件下的减推力起飞计算，演示如何用起飞性能表确定假设温度与襟翼设定，附完整检查单流程。</p>
+              <div class="tags"><span class="tag">高高原</span><span class="tag warm">性能计算</span><span class="tag green">A319</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei03/400/300" width="400" height="300" loading="lazy" alt="台风侧风降落挑战任务封面">
+              <span class="badge">挑战型</span><span class="hot">热度 9.3</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">台风天侧风 25 节降落</a></h3>
+              <p class="desc">在阵风 25 节、乱流明显的条件下执行 ILS 进近，比较蟹形进近与侧滑法在接地瞬间的修正时机，含三次失败复飞复盘。</p>
+              <div class="tags"><span class="tag">侧风</span><span class="tag warm">复飞</span><span class="tag green">气象</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei04/400/300" width="400" height="300" loading="lazy" alt="单发失效起飞复训任务封面">
+              <span class="badge">程序型</span><span class="hot">热度 9.1</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">V1 后单发失效处置</a></h3>
+              <p class="desc">起飞滑跑达到决断速度后一台发动机失效，按记忆项目完成蹬舵、收油门、建立爬升，重点讲方向控制与最小操纵速度的关系。</p>
+              <div class="tags"><span class="tag">发动机失效</span><span class="tag warm">SOP</span><span class="tag green">复训</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei05/400/300" width="400" height="300" loading="lazy" alt="A350与787航电对比任务封面">
+              <span class="badge">机型研究</span><span class="hot">热度 8.9</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">A350 与 787 航电逻辑对比</a></h3>
+              <p class="desc">同一段上海至东京航线上分别飞两型宽体机，对比触摸屏操作、飞行指引响应与自动油门逻辑差异，给出各自的适应期建议。</p>
+              <div class="tags"><span class="tag">宽体机</span><span class="tag warm">航电</span><span class="tag green">机型对比</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei06/400/300" width="400" height="300" loading="lazy" alt="伦敦希思罗夜间进近任务封面">
+              <span class="badge">程序型</span><span class="hot">热度 8.7</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">希思罗 27R 夜间进近</a></h3>
+              <p class="desc">高密度机场的进场排序与速度控制，演示如何在 4 分钟内连续接收三次高度指令并保持稳定进近标准，全程英文陆空通话。</p>
+              <div class="tags"><span class="tag">夜间</span><span class="tag warm">陆空通话</span><span class="tag green">繁忙机场</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei07/400/300" width="400" height="300" loading="lazy" alt="阿拉斯加朱诺机场地形进近任务封面">
+              <span class="badge">挑战型</span><span class="hot">热度 8.6</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">朱诺机场山谷地形进近</a></h3>
+              <p class="desc">两侧被山体夹住、无雷达引导的目视盘旋进近，讲地形警告系统的响应阈值与何时必须果断复飞，附航线剖面图。</p>
+              <div class="tags"><span class="tag">地形</span><span class="tag warm">目视盘旋</span><span class="tag green">阿拉斯加</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei08/400/300" width="400" height="300" loading="lazy" alt="冬季除冰与污染跑道起飞任务封面">
+              <span class="badge">程序型</span><span class="hot">热度 8.4</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">冬季除冰与污染跑道起飞</a></h3>
+              <p class="desc">零下 12 度、跑道积雪条件下的除冰液保持时间计算，以及污染跑道起飞距离修正，把容易被忽略的湿滑系数讲透。</p>
+              <div class="tags"><span class="tag">除冰</span><span class="tag warm">污染跑道</span><span class="tag green">冬季运行</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/jizhang-qifei09/400/300" width="400" height="300" loading="lazy" alt="货机长航线燃油管理任务封面">
+              <span class="badge">机型研究</span><span class="hot">热度 8.2</span>
+            </div>
+            <div class="body">
+              <h3><a href="/#tasks">跨太平洋货机燃油管理</a></h3>
+              <p class="desc">波音 777F 从上海浦东飞安克雷奇，讲备降油、等待油与最后储备油的分配逻辑，以及途中改航时的重新计算步骤。</p>
+              <div class="tags"><span class="tag">长航线</span><span class="tag warm">燃油</span><span class="tag green">777F</span></div>
+            </div>
+          </article>
+
+        </div>
+        <div class="empty" id="emptyBox">没有找到匹配的任务档案，换个机型或任务名试试，例如“侧风”“高高原”“A350”。</div>
+      </section>
+
+      <!-- 3 最新更新 / 动态 -->
+      <section class="sec" id="live" aria-labelledby="live-h">
+        <div class="sec-head"><h2 id="live-h">最新更新与直播动态</h2><span class="sub">截至 2026-11-25</span></div>
+        <ul class="feed">
+          <li><span class="time">今天 09:30</span><span class="name"><a href="/#tasks">台风侧风 25 节降落</a><span class="sum">第三次复飞复盘片段已上线，补充了接地前 3 秒的舵量数据</span></span><span class="kind">档案更新</span></li>
+          <li><span class="time">今天 08:10</span><span class="name"><a href="/#live">驾驶舱回放 142 期</a><span class="sum">香港启德 13 号跑道全程 38 分钟，含落地后讲评</span></span><span class="kind">回放上线</span></li>
+          <li><span class="time">昨天 21:10</span><span class="name"><a href="/#weather">跑道视程低于 550 米</a><span class="sum">低能见度起飞专题新增 3 个机场实况案例</span></span><span class="kind">专题扩充</span></li>
+          <li><span class="time">昨天 18:40</span><span class="name"><a href="/#fleet">A220-300 机型页</a><span class="sum">补充了短跑道性能数据与客舱构型说明</span></span><span class="kind">机型库</span></li>
+          <li><span class="time">11 月 23 日</span><span class="name"><a href="/#rank">高高原起飞挑战榜</a><span class="sum">本周榜单更新，稻城亚丁以 4 412 米海拔居首</span></span><span class="kind">榜单</span></li>
+          <li><span class="time">11 月 22 日</span><span class="name"><a href="/#checklist">起飞前检查单课堂</a><span class="sum">第 73 讲：为什么起飞构型警告会在滑跑中触发</span></span><span class="kind">课程</span></li>
+          <li><span class="time">11 月 20 日</span><span class="name"><a href="/#tasks">朱诺机场山谷进近</a><span class="sum">新增地形剖面图与两次复飞的高度曲线</span></span><span class="kind">档案更新</span></li>
+          <li><span class="time">11 月 18 日</span><span class="name"><a href="/#briefing">航前简报模板 v3</a><span class="sum">加入乱流层与结冰潜势两栏，可对照填写</span></span><span class="kind">工具</span></li>
+          <li><span class="time">11 月 16 日</span><span class="name"><a href="/#live">周末长航直播</a><span class="sum">上海浦东至安克雷奇 9 小时航段，分三段回放已归档</span></span><span class="kind">回放上线</span></li>
+          <li><span class="time">11 月 14 日</span><span class="name"><a href="/#community">社区共飞活动</a><span class="sum">本季主题定为“进近稳定性”，已开放报名入口说明</span></span><span class="kind">社区</span></li>
+        </ul>
+      </section>
+
+      <!-- 4 分类入口 -->
+      <section class="sec" id="fleet" aria-labelledby="fleet-h">
+        <div class="sec-head"><h2 id="fleet-h">按类别进入</h2><span class="sub">八个常用垂类</span></div>
+        <div class="cats">
+          <a class="cat" href="/#tasks"><b>窄体机任务</b><span>A320 系列、737 系列起降全流程</span></a>
+          <a class="cat" href="/#tasks"><b>宽体机任务</b><span>A350、787、777 长航线操作</span></a>
+          <a class="cat" href="/#weather"><b>极端气象</b><span>侧风、低能见度、乱流与结冰</span></a>
+          <a class="cat" href="/#tasks"><b>高高原机场</b><span>拉萨、稻城亚丁、九黄性能计算</span></a>
+          <a class="cat" href="/#checklist"><b>程序与检查单</b><span>SOP 逐项拆解与记忆项目</span></a>
+          <a class="cat" href="/#briefing"><b>航前简报</b><span>天气、航路、备降场与燃油</span></a>
+          <a class="cat" href="/#fleet"><b>机型对比</b><span>同航段不同机型的操纵差异</span></a>
+          <a class="cat" href="/#analysis"><b>事故复盘</b><span>历史事件在模拟器中的重现</span></a>
+        </div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section class="sec" id="analysis" aria-labelledby="analysis-h">
+        <div class="sec-head"><h2 id="analysis-h">深度解析：起飞这件事到底难在哪</h2><span class="sub">约 850 字</span></div>
+        <article class="article">
+          <p class="lede">从推出到离地，一架民航客机平均要完成 60 余项确认动作。9178机长起飞的档案库里，起飞阶段的内容占比接近一半，原因很直接：这是唯一没有“再来一次”机会的阶段。</p>
+
+          <h3>一、决断速度 V1 不是一道选择题</h3>
+          <p>新手最常问的问题是：如果起飞滑跑中出问题，V1 之前可以中断，V1 之后必须继续，那么判断依据是什么。答案藏在性能计算里。<strong>V1 是这样一个速度</strong>：在此之前中断，飞机能在剩余跑道上停住；在此之后中断，剩余跑道已不足以停下，继续起飞反而更安全。这意味着 V1 由跑道长度、重量、气温、襟翼设定共同决定，同一机型在不同机场的 V1 可能相差 20 节以上。</p>
+          <p>在<a href="/#tasks">拉萨贡嘎高高原起飞性能</a>这条档案里，可以清楚看到性能表如何一步步收窄可选范围：海拔升高导致空气密度下降，发动机推力衰减，同样重量需要更长跑道；若跑道长度固定，就只能减载或降低假设温度。整个过程是计算，不是感觉。</p>
+
+          <h3>二、侧风起飞与侧风降落是两套逻辑</h3>
+          <p>很多人把侧风训练理解成“落地那一下的修正”，其实起飞段的侧风处理同样关键，而且方法不同。</p>
+          <table class="compare">
+            <caption style="text-align:left;color:var(--text-3);font-size:12.5px;padding-bottom:6px">侧风起飞与降落的核心差异</caption>
+            <thead><tr><th>环节</th><th>起飞</th><th>降落</th></tr></thead>
+            <tbody>
+              <tr><td>主要目标</td><td>保持跑道中心线，避免翼尖或发动机擦地</td><td>在接地瞬间消除偏流，减少侧向载荷</td></tr>
+              <tr><td>常用方法</td><td>迎风侧滑（副翼迎风、方向舵保持中线）</td><td>蟹形进近后蹬舵消除偏流，或全程侧滑</td></tr>
+              <tr><td>失败代价</td><td>高速阶段偏离跑道，处置窗口极短</td><td>可复飞，但低高度复飞风险同样不低</td></tr>
+              <tr><td>关键速度</td><td>抬轮速度与最小操纵速度的关系</td><td>接地前 50 英尺的下降率与偏流角</td></tr>
+            </tbody>
+          </table>
+          <p>侧风 25 节的那条档案里，前两次尝试都在接地前出现明显偏流，第三次改用侧滑法才稳定落地。这不是方法优劣的问题，而是机型、跑道宽度与个人熟练度共同决定的选择。</p>
+
+          <h3>三、进近稳定性是可以被量化的</h3>
+          <p>所谓“稳定进近”，业内通常用一组硬指标衡量，而不是主观感觉：</p>
+          <ul>
+            <li><strong>高度 1 000 英尺</strong>时，飞机应已建立着陆构型、速度在目标 ±10 节以内、下降率不超过 1 000 英尺每分钟。</li>
+            <li><strong>高度 500 英尺</strong>时，航向与下滑道偏离应小于一个点，且推力稳定不处于慢车。</li>
+            <li>任何一项不满足，标准做法是复飞，而不是“再修一下看看”。</li>
+          </ul>
+          <p>这条规则看起来严苛，但它的价值在于把决策提前。人在低高度容易陷入“已经到这一步了”的心理惯性，用明确的数值门槛切断这种惯性，是训练的核心目的。</p>
+
+          <h3>四、机型差异比想象中更影响操作手感</h3>
+          <p>同为宽体机，A350 与 787 在自动油门响应上有明显不同：前者在乱流中修正更平缓，后者反应更积极。这直接影响进近时的手动补油门节奏。货机如 777F 由于重量大、惯性大，收油门后的速度衰减更慢，落地前需要更早开始减速。这些差异很难从手册参数里直接读出，只能靠同航段反复对比。</p>
+
+          <div class="callout"><b>一个判断标准：</b>如果你在同一条航线上连续三次落地都偏长或偏短，问题通常不在“手感”，而在进近速度与襟翼设定的匹配上。先回去核对目标速度，再谈操纵。</div>
+
+          <p>起飞之所以值得反复研究，是因为它把重量、气象、跑道、机型、人的判断压缩在几十秒里。每一次成功的离地，背后都是一整套被认真执行过的程序。</p>
+        </article>
+      </section>
+
+      <!-- 6 体验指南 -->
+      <section class="sec" id="guide" aria-labelledby="guide-h">
+        <div class="sec-head"><h2 id="guide-h">入门观看顺序与判断依据</h2><span class="sub">从哪条开始看，怎么判断值不值得投入时间</span></div>
+        <div class="steps">
+          <div class="step"><b>先看一条完整的标准航班</b><p>建议从<a href="/#live">希思罗 27R 夜间进近</a>入手。它没有故障、没有极端天气，你能完整看到一次正常航班的节奏，建立“基准感”。跳过这一步直接看挑战内容，容易误以为航空操作就是不断救场。</p></div>
+          <div class="step"><b>再补一条程序型档案</b><p>选<a href="/#tasks">V1 后单发失效处置</a>，重点看检查单如何在高压下被执行。判断一条程序类内容是否值得看，看它有没有把“为什么这么做”讲清楚，而不只是演示动作。</p></div>
+          <div class="step"><b>然后进入极端气象</b><p>侧风、低能见度、污染跑道这三类，按你所在地区的气候选一条。看的时候留意复飞决策点，这比看成功落地更有价值。</p></div>
+          <div class="step"><b>最后做机型横向对比</b><p>当你对一套流程熟悉后，再去看 A350 与 787 的差异，会更容易感知到操纵层面的细微区别。顺序反了，对比就变成看热闹。</p></div>
+        </div>
+        <div class="panel" style="margin-top:14px">
+          <p style="margin:0;color:var(--text-2);font-size:14px"><b style="color:var(--accent-2)">判断一条飞行内容是否值得投入时间的三条依据：</b>一看有没有完整的航前准备环节，只拍落地瞬间的内容信息量有限；二看失败与复飞是否被保留，剪掉失误的实录参考价值会打折；三看有没有讲评，落地后三分钟的复盘往往比全过程更有用。</p>
+        </div>
+      </section>
+
+      <!-- 7 FAQ -->
+      <section class="sec" id="faq" aria-labelledby="faq-h">
+        <div class="sec-head"><h2 id="faq-h">常见问题</h2><span class="sub">新手提问最密集的六个问题</span></div>
+
+        <details class="faq" open>
+          <summary>第一次接触飞行模拟，从哪个任务开始看比较好？</summary>
+          <div class="faq-body">建议从一条没有故障、天气正常的完整航班开始，比如希思罗 27R 夜间进近。先理解推出、滑行、起飞、巡航、进近、落地的整体节奏，再去看挑战类内容。直接上手极端气象容易产生挫败感，也不利于建立标准操作的概念。</div>
+        </details>
+
+        <details class="faq">
+          <summary>V1、VR、V2 这三个速度到底有什么区别？</summary>
+          <div class="faq-body">V1 是决断速度，在此之前可以安全中断起飞；VR 是抬轮速度，达到后开始拉杆使机头抬起；V2 是安全起飞速度，单发失效情况下仍能保持爬升的最低速度。三者由性能计算得出，随机场、重量、气温变化，不是固定值。</div>
+        </details>
+
+        <details class="faq">
+          <summary>高高原机场起飞为什么需要减载？</summary>
+          <div class="faq-body">海拔升高后空气密度下降，发动机进气量减少、推力衰减，同时机翼产生的升力也下降。为了在有限跑道长度内达到离地速度，只能降低起飞重量，也就是减载。拉萨贡嘎、稻城亚丁这类机场的减载幅度在夏季高温时尤其明显。</div>
+        </details>
+
+        <details class="faq">
+          <summary>侧风降落时蟹形进近和侧滑法哪个更好？</summary>
+          <div class="faq-body">没有绝对优劣。蟹形进近在接地前蹬舵消除偏流，对乘客更舒适，但接地瞬间的修正时机要求高；侧滑法全程保持机头对准跑道，操纵更直观，但机身承受侧向载荷，大风下需要更大舵量。实际选择取决于机型限制、侧风大小与飞行员熟练度。</div>
+        </details>
+
+        <details class="faq">
+          <summary>为什么很多实录里落地后会立刻复飞？</summary>
+          <div class="faq-body">最常见的原因是进近不稳定：高度 1 000 英尺时速度偏离目标超过 10 节、下降率过大，或航向偏离超出标准。按规程此时应复飞而不是强行落地。复飞不是失败，它是把风险重新归零的标准动作，档案里保留这些片段正是为了说明这一点。</div>
+        </details>
+
+        <details class="faq">
+          <summary>A350 和 787 的驾驶舱操作差异大吗？</summary>
+          <div class="faq-body">两者都高度自动化，但交互逻辑不同。A350 大量使用触摸屏，菜单层级较深；787 保留较多实体按键与光标控制。自动油门响应上，787 更积极，A350 更平缓，这在乱流进近时的手动补油门节奏上能明显感觉到。转换机型通常需要一段适应期。</div>
+        </details>
+      </section>
+
+      <!-- 8 用户评论 -->
+      <section class="sec" id="community" aria-labelledby="community-h">
+        <div class="sec-head"><h2 id="community-h">社区评论</h2><span class="sub">来自共飞社区的真实反馈</span></div>
+        <div class="comments">
+          <div class="comment"><div class="who"><span class="avatar">航</span><span class="nick">云上巡航员</span><span class="when">今天 10:22</span></div><p>启德那条看了三遍，<b>47 度转向</b>那一下真的服气，我每次都在最后两百米偏出去。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">风</span><span class="nick">侧风十八节</span><span class="when">今天 09:48</span></div><p>侧滑法练了两个月还是不稳，看了复飞复盘才意识到是接地前收油门太早。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">高</span><span class="nick">高原小飞</span><span class="when">今天 08:15</span></div><p>拉萨那条的性能表讲得很清楚，比我自己翻手册快多了，减载那段终于看懂了。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">老</span><span class="nick">老机务老陈</span><span class="when">昨天 22:36</span></div><p>程序做得挺规范，不过除冰那期的保持时间建议再核对一下，不同除冰液型号差别不小。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">七</span><span class="nick">七三七钉子户</span><span class="when">昨天 21:05</span></div><p>737 老用户表示 A350 那期看完有点心动，触摸屏看着是真方便。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">夜</span><span class="nick">夜航西飞</span><span class="when">昨天 19:40</span></div><p>希思罗那段陆空通话信息密度太高了，建议出个逐句拆解版。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">小</span><span class="nick">小跑道爱好者</span><span class="when">11 月 24 日</span></div><p>朱诺的地形进近太有意思，山谷里那个转弯我直接撞山了三次，笑死。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">燃</span><span class="nick">燃油计算器</span><span class="when">11 月 24 日</span></div><p>跨太平洋那期燃油分配讲得细，最后储备油那块我截图存下来了。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">飞</span><span class="nick">飞行学员小林</span><span class="when">11 月 23 日</span></div><p>作为真机学员，这里的检查单流程和课上教的能对上，挺难得的。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">C</span><span class="nick">Cape_77</span><span class="when">11 月 23 日</span></div><p>画质一般般吧，但内容确实扎实，我更在意程序对不对，画面无所谓。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">台</span><span class="nick">台风季常客</span><span class="when">11 月 22 日</span></div><p>25 节阵风那段，第三次落地的舵量看着就很舒服，教科书级别。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">冬</span><span class="nick">冬季运行组</span><span class="when">11 月 22 日</span></div><p>除冰那期如果能加一个保持时间查询表就更实用了，现在还得自己算。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">宽</span><span class="nick">宽体机观察员</span><span class="when">11 月 21 日</span></div><p>A350 和 787 的自动油门差异描述很准，我两边都飞过，感受一致。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">复</span><span class="nick">复飞专业户</span><span class="when">11 月 20 日</span></div><p>终于有人把复飞讲得这么理直气壮了，以前总觉得复飞很丢人。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">浦</span><span class="nick">浦东夜班</span><span class="when">11 月 19 日</span></div><p>货机长航线那期时长有点长，建议按航段章节切开，方便分段看。</p></div>
+          <div class="comment"><div class="who"><span class="avatar">米</span><span class="nick">米格走廊</span><span class="when">11 月 18 日</span></div><p>单发失效那段方向控制讲得好，V1 之后是真的没有回头路。</p></div>
+        </div>
+      </section>
+
+      <!-- 9 相关资讯 -->
+      <section class="sec" id="news" aria-labelledby="news-h">
+        <div class="sec-head"><h2 id="news-h">相关资讯</h2><span class="sub">近期动态</span></div>
+        <div class="news">
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/jizhang-news01/600/400" width="600" height="400" loading="lazy" alt="高高原机场起飞性能专题配图">
+            <div class="nbody">
+              <span class="date">2026-11-24</span>
+              <h3><a href="/#tasks">高高原机场起飞性能专题扩充至 12 个机场</a></h3>
+              <p>新增稻城亚丁、康定、九黄三个机场的夏季高温性能表，并补充了减载决策的完整计算示例。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/jizhang-news02/600/400" width="600" height="400" loading="lazy" alt="侧风降落实录合集配图">
+            <div class="nbody">
+              <span class="date">2026-11-21</span>
+              <h3><a href="/#weather">台风季侧风降落实录合集上线 8 条</a></h3>
+              <p>覆盖 15 至 25 节侧风区间，其中 3 条包含复飞，另附蟹形与侧滑两种方法的对比讲评。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/jizhang-news03/600/400" width="600" height="400" loading="lazy" alt="检查单课堂更新配图">
+            <div class="nbody">
+              <span class="date">2026-11-19</span>
+              <h3><a href="/#checklist">检查单课堂新增起飞构型警告专题</a></h3>
+              <p>解释为何襟翼设定错误会在滑跑加速阶段才触发警告，以及此时中断起飞的判断边界。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/jizhang-news04/600/400" width="600" height="400" loading="lazy" alt="社区共飞活动配图">
+            <div class="nbody">
+              <span class="date">2026-11-16</span>
+              <h3><a href="/#community">社区共飞活动确定本季主题为进近稳定性</a></h3>
+              <p>参与者需提交一段完整进近录像，由社区按 1 000 英尺与 500 英尺两个检查点评分。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/jizhang-news05/600/400" width="600" height="400" loading="lazy" alt="宽体机航电对比配图">
+            <div class="nbody">
+              <span class="date">2026-11-11</span>
+              <h3><a href="/#fleet">宽体机航电对比系列完成 A350 与 787 两期</a></h3>
+              <p>两期均采用上海至东京同一航段，便于直接比较触摸屏与实体按键在人机交互上的差异。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/jizhang-news06/600/400" width="600" height="400" loading="lazy" alt="航前简报模板更新配图">
+            <div class="nbody">
+              <span class="date">2026-11-05</span>
+              <h3><a href="/#briefing">航前简报模板更新至 v3 版本</a></h3>
+              <p>新增乱流层与结冰潜势两栏，并把备降场燃油计算改为可填写表格，便于对照使用。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section class="sec" id="reco" aria-labelledby="reco-h">
+        <div class="sec-head"><h2 id="reco-h">延伸方向</h2><span class="sub">从已看内容向外扩展</span></div>
+        <div class="reco">
+          <a href="/#tasks">最小操纵速度<em>概念</em></a>
+          <a href="/#tasks">污染跑道起飞距离修正<em>计算</em></a>
+          <a href="/#weather">低能见度起飞标准<em>气象</em></a>
+          <a href="/#checklist">记忆项目与检查单<em>程序</em></a>
+          <a href="/#fleet">A220 短跑道性能<em>机型</em></a>
+          <a href="/#briefing">备降场燃油规划<em>航前</em></a>
+          <a href="/#analysis">历史事件决策复盘<em>复盘</em></a>
+          <a href="/#live">驾驶舱全程实录<em>回放</em></a>
+        </div>
+      </section>
+
+      <!-- 11 补充板块：榜单 + 时间线 -->
+      <section class="sec" id="rank" aria-labelledby="rank-h">
+        <div class="sec-head"><h2 id="rank-h">本周挑战榜单</h2><span class="sub">按完成度与落地质量综合排序</span></div>
+        <div class="panel tight" style="padding:0;overflow:hidden">
+          <ol class="rank">
+            <li><span class="rname">稻城亚丁 4 412 米起飞<span class="rsub">减载后成功离地</span></span><span class="rscore">98.6</span></li>
+            <li><span class="rname">拉萨贡嘎夏季高温起飞<span class="rsub">假设温度 52 度</span></span><span class="rscore">97.2</span></li>
+            <li><span class="rname">启德 13 号棋盘进近<span class="rsub">手动全程</span></span><span class="rscore">96.4</span></li>
+            <li><span class="rname">台风 25 节侧风降落<span class="rsub">第三次尝试成功</span></span><span class="rscore">95.1</span></li>
+            <li><span class="rname">朱诺山谷目视盘旋<span class="rsub">无雷达引导</span></span><span class="rscore">93.8</span></li>
+            <li><span class="rname">V1 后单发失效处置<span class="rsub">方向控制稳定</span></span><span class="rscore">92.5</span></li>
+            <li><span class="rname">希思罗 27R 夜间进近<span class="rsub">稳定进近达标</span></span><span class="rscore">91.0</span></li>
+            <li><span class="rname">污染跑道起飞修正<span class="rsub">湿滑系数 0.4</span></span><span class="rscore">89.7</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sec" id="briefing" aria-labelledby="briefing-h">
+        <div class="sec-head"><h2 id="briefing-h">十一月内容时间线</h2><span class="sub">档案与课程上线节奏</span></div>
+        <div class="panel">
+          <ul class="timeline">
+            <li><span class="tdate">2026-11-25</span><span class="ttext"><b>台风侧风 25 节降落</b>补充第三次复飞复盘，附舵量数据</span></li>
+            <li><span class="tdate">2026-11-21</span><span class="ttext"><b>台风季侧风合集</b>上线 8 条实录，覆盖 15 至 25 节区间</span></li>
+            <li><span class="tdate">2026-11-19</span><span class="ttext"><b>检查单课堂第 73 讲</b>起飞构型警告专题发布</span></li>
+            <li><span class="tdate">2026-11-16</span><span class="ttext"><b>周末长航直播</b>上海浦东至安克雷奇分段回放归档</span></li>
+            <li><span class="tdate">2026-11-11</span><span class="ttext"><b>A350 与 787 航电对比</b>第二期上线，完成系列</span></li>
+            <li><span class="tdate">2026-11-05</span><span class="ttext"><b>航前简报模板 v3</b>开放使用，新增结冰潜势栏</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="checklist" aria-labelledby="quote-h">
+        <div class="sec-head"><h2 id="quote-h">机长手记</h2><span class="sub">来自驾驶舱的一句话</span></div>
+        <div class="quote">
+          <p>“起飞这一步没有容错空间，所以它才值得被一遍遍拆开讲。你要在三十秒里做完所有判断，靠的不是临场反应，是之前几百次重复留下的肌肉记忆。”</p>
+          <footer>—— 9178机长起飞 · 2026 年 11 月 25 日驾驶舱手记</footer>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右辅助栏 -->
+    <aside class="aux" aria-label="辅助信息">
+      <div class="side-card">
+        <h3>今日热榜</h3>
+        <ul>
+          <li><span class="idx">1</span><a href="/#tasks">台风 25 节侧风降落</a><span class="meta">9.8</span></li>
+          <li><span class="idx">2</span><a href="/#tasks">拉萨高高原起飞性能</a><span class="meta">9.5</span></li>
+          <li><span class="idx">3</span><a href="/#tasks">启德 13 号棋盘进近</a><span class="meta">9.3</span></li>
+          <li><span class="idx">4</span><a href="/#tasks">V1 后单发失效处置</a><span class="meta">9.1</span></li>
+          <li><span class="idx">5</span><a href="/#tasks">A350 与 787 航电对比</a><span class="meta">8.9</span></li>
+          <li><span class="idx">6</span><a href="/#tasks">朱诺山谷地形进近</a><span class="meta">8.6</span></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>机型速查</h3>
+        <ul>
+          <li><a href="/#fleet">A320neo</a><span class="meta">窄体</span></li>
+          <li><a href="/#fleet">737 MAX 8</a><span class="meta">窄体</span></li>
+          <li><a href="/#fleet">A350-900</a><span class="meta">宽体</span></li>
+          <li><a href="/#fleet">787-9</a><span class="meta">宽体</span></li>
+          <li><a href="/#fleet">777F</a><span class="meta">货机</span></li>
+          <li><a href="/#fleet">A220-300</a><span class="meta">支线</span></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>更新节奏</h3>
+        <p style="font-size:13px;color:var(--text-2);margin:0 0 8px">任务档案：每周二、周五更新</p>
+        <p style="font-size:13px;color:var(--text-2);margin:0 0 8px">驾驶舱回放：每周一期，周日晚</p>
+        <p style="font-size:13px;color:var(--text-2);margin:0">挑战榜单：每周一刷新</p>
+      </div>
+
+      <div class="side-card">
+        <h3>参与共飞</h3>
+        <p style="font-size:13px;color:var(--text-2);margin:0 0 10px">本季主题：进近稳定性。提交完整进近录像参与社区评分。</p>
+        <a class="btn-ghost" href="/#community" style="display:inline-block">查看活动说明</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site">
+  <div class="foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="/#top" aria-label="9178机长起飞">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" fill="none" stroke="#38d0ff" stroke-width="1.4" opacity=".5"/>
+          <path d="M24 9 L29 22 L24 20 L19 22 Z" fill="#38d0ff"/>
+          <path d="M24 39 L19 26 L24 28 L29 26 Z" fill="#ffb547" opacity=".85"/>
+          <circle cx="24" cy="24" r="3" fill="#ffb547"/>
+        </svg>
+        <span class="brand-text"><strong>9178机长起飞</strong><span>FLIGHT DECK STUDIO</span></span>
+      </a>
+      <p>记录真实飞行程序在模拟器中的完整落地过程，覆盖任务档案、机型对比与极端气象操作。</p>
+    </div>
+    <div class="foot-col">
+      <h4>内容频道</h4>
+      <ul>
+        <li><a href="/#tasks">任务档案</a></li>
+        <li><a href="/#live">直播回放</a></li>
+        <li><a href="/#fleet">机型库</a></li>
+        <li><a href="/#checklist">检查单课堂</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>学习与参考</h4>
+      <ul>
+        <li><a href="/#guide">入门路径</a></li>
+        <li><a href="/#analysis">深度解析</a></li>
+        <li><a href="/#briefing">航前简报</a></li>
+        <li><a href="/#faq">常见问题</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>社区</h4>
+      <ul>
+        <li><a href="/#community">社区评论</a></li>
+        <li><a href="/#rank">挑战榜单</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#reco">延伸方向</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 9178机长起飞 · 内容为飞行模拟演示，飞行数据与操作示例仅用于学习参考，不构成真实飞行指导。</span>
+    <span>站内热度、评分与时间为示例信息</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var btn = document.getElementById('qbtn');
+  var grid = document.getElementById('cardGrid');
+  var empty = document.getElementById('emptyBox');
+  if(!input || !grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+
+  function run(){
+    var kw = (input.value || '').trim().toLowerCase();
+    if(!kw){
+      cards.forEach(function(c){ c.style.display = ''; });
+      empty.classList.remove('show');
+      return;
+    }
+    var hit = 0;
+    cards.forEach(function(c){
+      var text = c.textContent.toLowerCase();
+      var match = text.indexOf(kw) !== -1;
+      c.style.display = match ? '' : 'none';
+      if(match) hit++;
+    });
+    empty.classList.toggle('show', hit === 0);
+  }
+
+  btn.addEventListener('click', run);
+  input.addEventListener('input', run);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); run(); }
+  });
+})();
+</script>
+
+</body>
+        </html>
